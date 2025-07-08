@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Daily routine plan form</title>
+    <style>
+
+ @keyframes djBlink {
+  0%   { color: red; }
+  25%  { color: yellow; }
+  50%  { color: lime; }
+  75%  { color: cyan; }
+  100% { color: magenta; }
+}
+
+</style>
+</head>
+<body style="background-image:url('https://static.vecteezy.com/system/resources/thumbnails/022/503/943/small/linear-halftone-smoke-abstract-background-fog-backdrop-formed-by-polygonal-triangles-and-woodcut-style-transitions-vector.jpg');">
+    <h2 style="text-align: center;animation:djBlink 1s infinite;color:blue;">DAILY ROUTINE PLAN</h2>
+    <label>Enter how many plans you want to create:</label>
+    <input type="number" id="plan_number" name="plan_number" placeholder="Enter number of plans">
+    <button onclick="func()">Click me! To generate inputs</button>
+    
+    <div id="input_fields"></div>
+    <button onclick="final_result()">🧑‍🎓 Show the plans and times you entered</button>
+    <div id="result"></div>
+
+    <script>
+        function func() {
+            let count = Number(document.getElementById("plan_number").value);
+            let area = "";
+
+            for (let i = 1; i <= count; i++) {
+                area += "<hr>";
+                area += "⌚ Plan number " + i + " <label>Start time</label> <input type='text' id='start" + i + "'><br>";
+                area += "⌚ Plan number " + i + " <label>End time</label> <input type='text' id='end" + i + "'><br>";
+                area += "🤔 Plan number " + i + " <label>What's the plan</label> <input type='text' id='plan" + i + "'><br>";
+            }
+
+            document.getElementById("input_fields").innerHTML = area;
+        }
+
+        function final_result() {
+            let count = Number(document.getElementById("plan_number").value);
+            let area = "<h3>😱 The plans and the times you entered are:</h3><br>";
+
+            for (let i = 1; i <= count; i++) {
+                let start = document.getElementById("start" + i).value;
+                let end = document.getElementById("end" + i).value;
+                let plan = document.getElementById("plan" + i).value;
+                area+="<hr>";
+                
+      area += "🕐 Plan " + i + ": " + plan + "<br>⏰ Start: " + start + " | End: " + end + "<br><br>";
+
+        
+    
+            }
+
+            document.getElementById("result").innerHTML = area;
+        }
+    </script>
+</body>
+</html>
